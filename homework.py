@@ -62,7 +62,7 @@ def get_api_answer(current_timestamp):
                 'Код ответа сервера не соотвествует ожидаемому при запросе к'
                 'эндпоинту API-сервиса'
             ))
-        return response
+        return(response)
 
 
 def check_response(response):
