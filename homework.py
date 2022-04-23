@@ -35,6 +35,7 @@ logger.addHandler(handler)
 
 
 def send_message(bot, message):
+    """Отправляет сообщение в чат."""
     try:
         text = message
         bot.send_message(chat_id=TELEGRAM_CHAT_ID, text=text)
@@ -45,6 +46,7 @@ def send_message(bot, message):
 
 
 def get_api_answer(current_timestamp):
+    """Запрос к эндпоинту API-сервиса."""
     timestamp = current_timestamp or int(time.time())
     params = {'from_date': timestamp}
     try:
@@ -66,6 +68,7 @@ def get_api_answer(current_timestamp):
 
 
 def check_response(response):
+    """Возвращает список домашних работ из ответа API."""
     try:
         homeworks = response['homeworks']
     except KeyError as error:
@@ -81,6 +84,8 @@ def check_response(response):
 
 
 def parse_status(homework):
+    """Извлекает статусы домашних работ."""
+    global homework_name
     try:
         homework_name = homework.get('homework_name')
         homework_status = homework.get('status')
@@ -96,6 +101,7 @@ def parse_status(homework):
 
 
 def check_tokens():
+    """Проверяет доступности переменных окружения."""
     enviroment_variables = {
         'PRACTICUM_TOKEN': PRACTICUM_TOKEN,
         'TELEGRAM_TOKEN': TELEGRAM_TOKEN,
