@@ -126,15 +126,6 @@ def main():
     last_error_message = ''
     last_homework = 0
 
-    if not check_tokens() is False:
-        message = (
-            'Бот остановлен с критической ошибкой - отсутствуют'
-            'переменные окружения'
-        )
-        send_message(bot, message)
-        sys.exit(1)
-
-    check_tokens() is True
     while True:
         try:
             response = get_api_answer(current_timestamp)
